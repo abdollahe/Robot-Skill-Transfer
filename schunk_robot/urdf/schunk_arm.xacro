@@ -315,6 +315,8 @@
 </joint>
 
 
+<!--==================================== Sensor section======================================================== -->
+<xacro:include filename="$(find schunk_robot)/urdf/sensors/xtion_pro_live.urdf.xacro"/>
 
 </robot>
 
