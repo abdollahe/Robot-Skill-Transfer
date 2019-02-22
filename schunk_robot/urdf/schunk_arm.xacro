@@ -23,11 +23,11 @@
     <material value="Gazebo/Green"/>
 </gazebo>
 
-<!-- <gazebo reference="joint3">
+<gazebo reference="link3">
     <gravity>true</gravity>
     <self_collide>false</self_collide>
     <material value="Gazebo/Blue"/>
-</gazebo> -->
+</gazebo>
 
 <!-- <gazebo reference="joint4">
     <gravity>true</gravity>
@@ -69,8 +69,8 @@
         <geometry>
             <mesh filename="package://schunk_robot/meshes/robot_base_v3.STL"/>
         </geometry>
-        <material name="blue">
-            <color rgba="0 0 1 1"/>
+        <material name="red">
+            <color rgba="1 0 0 1"/>
         </material>
     </visual>
     <collision>
@@ -103,8 +103,8 @@
         <geometry>
             <mesh filename="package://schunk_robot/meshes/joint1_v3.STL"/>
         </geometry>
-        <material name="red">
-            <color rgba="1 0 0 1"/>
+        <material name="green">
+            <color rgba="0 1 0 1"/>
         </material>
     </visual>
     <collision>
@@ -134,13 +134,15 @@
 
 <!--================================================================Link 2====================================================================================-->
 
-<!-- <link name="link2">
+<link name="link2">
     <visual>
         <origin rpy="0 0 0" xyz="0 0.005 0"/>
         <geometry>
             <mesh filename="package://schunk_robot/meshes/joint2_v3.STL"/>
         </geometry>
-        <material name="Neobotix/Green"/>
+        <material name="blue">
+            <color rgba="0 0 1 1"/>
+        </material>
     </visual>
     <collision>
         <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -148,24 +150,171 @@
             <mesh filename="package://schunk_robot/meshes/joint2_v3.STL"/>
         </geometry>
     </collision>
-    <inertial> -->
+    <inertial> 
         <!--mass value="2"/-->
-        <!-- <mass value="2.5"/>
+         <mass value="2.5"/>
         <origin xyz="0 -0.1925 0" rpy="0 0 0"/>
         <inertia ixx="0.030278"	 ixy="-0.007138" ixz="0.000435"
                  iyx="-0.007138" iyy="0.010755"	 iyz="0.000859"
                  izx="0.000435"	 izy=" 0.000859" izz="0.030724"/>
     </inertial>
-</link> -->
+</link>
 
-<!-- <joint name="joint2" type="revolute">
+<joint name="joint2" type="revolute">
     <axis xyz="0 0 1"/>
     <limit effort="1000.0" lower="-2.0071" upper="2.0071" velocity="0.5"/>
     <parent link="link1"/>
     <child link="link2"/>
     <origin xyz="0 0 0.165" rpy="-1.57079 0 0"/>
     <dynamics damping="0.0" friction="0.0"/>
-</joint> -->
+</joint>
+<!--================================================================Link 3====================================================================================-->
+
+<link name="link3">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <mesh filename="package://schunk_robot/meshes/joint3_v3.STL"/>
+        </geometry>
+        <material name="red">
+            <color rgba="1 0 0 1"/>
+        </material>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <mesh filename="package://schunk_robot/meshes/joint3_v3.STL"/>
+        </geometry>
+    </collision>
+    <inertial>
+        <!--mass value="2"/-->
+        <mass value="2.5"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="0.002573" ixy="0.000000" ixz="0.000000"
+                 iyx="0.000000" iyy="0.003196" iyz="0.000000"
+                 izx="0.000000" izy="0.000000" izz="0.002484"/>
+    </inertial>
+</link>
+
+<joint name="joint3" type="revolute">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="-1.9199" upper="1.9199" velocity="0.5"/>
+    <parent link="link2"/>
+    <child link="link3"/>
+    <origin xyz="0 -0.385 0" rpy="0 0 0"/>
+    <dynamics damping="0.0" friction="0.0"/>
+</joint>
+
+<!--================================================================Link 4====================================================================================-->
+
+<link name="link4">
+    <visual>
+        <origin xyz="0 0 0.4445" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="package://schunk_robot/meshes/joint4_v3.STL"/>
+        </geometry>
+        <material name="green">
+            <color rgba="0 1 0 1"/>
+        </material>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0.4445" rpy="0 0 0"/>
+        <geometry>
+            <mesh filename="package://schunk_robot/meshes/joint4_v3.STL"/>
+        </geometry>
+    </collision>
+    <inertial>
+        <!--mass value="2"/-->
+        <mass value="1.7"/>
+        <origin xyz="0 0 0.2225" rpy="1.57079 1.57079 0"/>
+        <inertia ixx="0.003830"  ixy="0.001706"  ixz="-0.003042"
+                 iyx="0.001706"  iyy="0.010112"  iyz="-0.000765"
+                 izx="-0.003042" izy="-0.000765" izz="0.009108"/>
+    </inertial>
+</link>
+
+<joint name="joint4" type="revolute">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="-3.4907" upper="3.4907" velocity="0.5"/>
+    <parent link="link3"/>
+    <child link="link4"/>
+    <origin xyz="0 0 0" rpy="1.57079 0 0"/>
+    <dynamics damping="0.0" friction="0.0"/>
+</joint>
+<!--================================================================Link 5====================================================================================-->
+
+<link name="link5">
+    <visual>
+        <origin xyz="0 0 0" rpy="1.57079 0 3.14159"/>
+        <geometry>
+            <mesh filename="package://schunk_robot/meshes/joint5_v3.STL"/>
+        </geometry>
+        <material name="blue">
+            <color rgba="0 0 1 1"/>
+        </material>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="1.57079 0 3.14159"/>
+        <geometry>
+            <mesh filename="package://schunk_robot/meshes/joint5_v3.STL"/>
+        </geometry>
+    </collision>
+    <inertial>
+        <!--mass value="2"/-->
+        <mass value="1.6"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="0.001222" ixy="0.000061" ixz="0.000141"
+                 iyx="0.000061" iyy="0.001793" iyz="0.000048"
+                 izx="0.000141" izy="0.000048" izz="0.001435"/>
+    </inertial>
+</link>
+
+<joint name="joint5" type="revolute">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="-1.8675" upper="1.8675" velocity="0.5"/>
+    <parent link="link4"/>
+    <child link="link5"/>
+    <origin  xyz="0 0 0.445" rpy="-1.57079 0 0"/>
+    <dynamics damping="0.0" friction="0.0"/>
+</joint>
+<!--================================================================Link 6====================================================================================-->
+
+<link name="link6">
+    <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+            <mesh filename="package://schunk_robot/meshes/joint6_v3.STL"/>
+        </geometry>
+        <material name="yellow">
+            <color rgba="1 1 0 1"/>
+        </material>
+    </visual>
+    <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+              <mesh filename="package://schunk_robot/meshes/joint6_v3.STL"/>
+        </geometry>
+    </collision>
+    <inertial>
+        <!--mass value="2"/-->
+        <mass value="1.6"/>
+        <origin xyz="0 0 -0.06" rpy="0 0 0"/>
+        <inertia ixx="0.000654" ixy="0.000000" ixz="0.000000"
+                 iyx="0.000000" iyy="0.000954" iyz="0.000000"
+                 izx="0.000000" izy="0.000000" izz="0.000929"/>
+    </inertial>
+</link>
+
+<joint name="joint6" type="revolute">
+    <origin xyz="0 -0.2 0" rpy="1.57079 0 0" />
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="-3.4907" upper="3.4907" velocity="0.5"/>
+    <parent link="link5"/>
+    <child link="link6"/>
+    <dynamics damping="0.0" friction="0.0"/>
+</joint>
+
+
 
 </robot>
 
