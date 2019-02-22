@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<robot name="schunk" xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:property name="M_PI" value="3.1415926535897931" />
+
+<!--================================================================Gazebo References=============================================================================-->
+
+<gazebo reference="robot_base">
+    <gravity>true</gravity>
+    <self_collide>false</self_collide>
+    <material value="Gazebo/Blue"/>
+</gazebo>
+
+<gazebo reference="link1">
+    <gravity>true</gravity>
+    <self_collide>false</self_collide>
+    <material value="Gazebo/Red"/>
+</gazebo>
+
+<gazebo reference="link2">
+    <gravity>true</gravity>
+    <self_collide>false</self_collide>
+    <material value="Gazebo/Green"/>
+</gazebo>
+
+<!-- <gazebo reference="joint3">
+    <gravity>true</gravity>
+    <self_collide>false</self_collide>
+    <material value="Gazebo/Blue"/>
+</gazebo> -->
+
+<!-- <gazebo reference="joint4">
+    <gravity>true</gravity>
+    <self_collide>false</self_collide>
+    <material value="Gazebo/Red"/>
+</gazebo> -->
+
+<!-- <gazebo reference="joint5">
+    <gravity>true</gravity>
+    <self_collide>false</self_collide>
+    <material value="Gazebo/Green"/>
+</gazebo> -->
+
+<!-- <gazebo reference="joint6">
+    <gravity>true</gravity>
+    <self_collide>false</self_collide>
+    <material value="Gazebo/Blue"/>
+    minDepth for magnetic gripper
+    <minDepth>0.02</minDepth>
+</gazebo> -->
+
+<!-- <gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/schunk</robotNamespace>
+  </plugin>
+</gazebo> -->
+
+
+<!--===================================================+==========Schunk Arm====================================================================================-->
+<!--===================================================+========= Schunk arm connection to world ====================================================================================-->
+
+<!-- Used for fixing robot to world -->
+<link name="world"/>
+<!--================================================================Schunk Arm Base===============================================================================-->
+
+<link name="base_link">
+    <visual>
+        <origin xyz ="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <mesh filename="package://schunk_robot/meshes/robot_base_v3.STL"/>
+        </geometry>
+        <material name="blue">
+            <color rgba="0 0 1 1"/>
+        </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+            <mesh filename="package://schunk_robot/meshes/robot_base_v3.STL"/>
+      </geometry>
+    </collision>
+    <inertial>
+        <!--mass value="2"/-->
+        <mass value="7"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="0.007988" ixy="0.000000" ixz="0.000000"
+                 iyx="0.000000" iyy="0.004975" iyz="0.000000"
+                 izx="0.000000" izy="0.000000" izz="0.008000"/>
+    </inertial>
+</link>
+
+<joint name="arm_to_world_joint" type="fixed">
+     <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+</joint>
+
+<!--================================================================Link 1====================================================================================-->
+
+<link name="link1">
+    <visual>
+        <origin xyz="0 0 0.165" rpy="-1.57079 0 0"/>
+        <geometry>
+            <mesh filename="package://schunk_robot/meshes/joint1_v3.STL"/>
+        </geometry>
+        <material name="red">
+            <color rgba="1 0 0 1"/>
+        </material>
+    </visual>
+    <collision>
+      <origin rpy="-1.57079 0 0" xyz="0 0 0.165"/>
+      <geometry>
+            <mesh filename="package://schunk_robot/meshes/joint1_v3.STL"/>
+      </geometry>
+    </collision>
+    <inertial> -->
+        <!--mass value="2"/-->
+        <mass value="4.1"/>
+        <origin xyz="0 0 0.16" rpy="0 0 0"/>
+        <inertia ixx="0.012578" ixy="0.000868" ixz="0.000291"
+                 iyx="0.000868" iyy="0.005680" iyz="0.002500"
+                 izx="0.000291" izy="0.002500" izz="0.011852"/>
+    </inertial>
+</link>
+
+<joint name="joint1" type="revolute">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="-2.9671" upper="2.9671" velocity="0.5"/>
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <origin xyz="0 0 0.215" rpy="0 0 0"/>
+    <dynamics damping="0.0" friction="0.0"/>
+</joint>
+
+<!--================================================================Link 2====================================================================================-->
+
+<!-- <link name="link2">
+    <visual>
+        <origin rpy="0 0 0" xyz="0 0.005 0"/>
+        <geometry>
+            <mesh filename="package://schunk_robot/meshes/joint2_v3.STL"/>
+        </geometry>
+        <material name="Neobotix/Green"/>
+    </visual>
+    <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+            <mesh filename="package://schunk_robot/meshes/joint2_v3.STL"/>
+        </geometry>
+    </collision>
+    <inertial> -->
+        <!--mass value="2"/-->
+        <!-- <mass value="2.5"/>
+        <origin xyz="0 -0.1925 0" rpy="0 0 0"/>
+        <inertia ixx="0.030278"	 ixy="-0.007138" ixz="0.000435"
+                 iyx="-0.007138" iyy="0.010755"	 iyz="0.000859"
+                 izx="0.000435"	 izy=" 0.000859" izz="0.030724"/>
+    </inertial>
+</link> -->
+
+<!-- <joint name="joint2" type="revolute">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="-2.0071" upper="2.0071" velocity="0.5"/>
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin xyz="0 0 0.165" rpy="-1.57079 0 0"/>
+    <dynamics damping="0.0" friction="0.0"/>
+</joint> -->
+
+</robot>
+
