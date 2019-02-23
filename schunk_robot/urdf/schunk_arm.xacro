@@ -5,49 +5,49 @@
 
 <!--================================================================Gazebo References=============================================================================-->
 
-<gazebo reference="robot_base">
+<gazebo reference="base_link">
     <gravity>true</gravity>
     <self_collide>false</self_collide>
-    <material value="Gazebo/Blue"/>
+    <material value="Gazebo/Red"/>
 </gazebo>
 
 <gazebo reference="link1">
     <gravity>true</gravity>
     <self_collide>false</self_collide>
-    <material value="Gazebo/Red"/>
+    <material value="Gazebo/Green"/>
 </gazebo>
 
 <gazebo reference="link2">
     <gravity>true</gravity>
     <self_collide>false</self_collide>
-    <material value="Gazebo/Green"/>
+    <material value="Gazebo/Blue"/>
 </gazebo>
 
 <gazebo reference="link3">
     <gravity>true</gravity>
     <self_collide>false</self_collide>
-    <material value="Gazebo/Blue"/>
+    <material value="Gazebo/Red"/>
 </gazebo>
 
-<!-- <gazebo reference="joint4">
-    <gravity>true</gravity>
-    <self_collide>false</self_collide>
-    <material value="Gazebo/Red"/>
-</gazebo> -->
-
-<!-- <gazebo reference="joint5">
+<gazebo reference="link4">
     <gravity>true</gravity>
     <self_collide>false</self_collide>
     <material value="Gazebo/Green"/>
-</gazebo> -->
+</gazebo>
 
-<!-- <gazebo reference="joint6">
+<gazebo reference="link5">
     <gravity>true</gravity>
     <self_collide>false</self_collide>
     <material value="Gazebo/Blue"/>
-    minDepth for magnetic gripper
+</gazebo>
+
+<gazebo reference="link6">
+    <gravity>true</gravity>
+    <self_collide>false</self_collide>
+    <material value="Gazebo/Yellow"/>
+    <!-- minDepth for magnetic gripper -->
     <minDepth>0.02</minDepth>
-</gazebo> -->
+</gazebo>
 
 <!-- <gazebo>
   <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
