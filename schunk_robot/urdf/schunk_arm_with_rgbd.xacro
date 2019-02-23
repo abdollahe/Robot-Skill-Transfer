@@ -3,6 +3,8 @@
 
 <xacro:property name="M_PI" value="3.1415926535897931" />
 
+ <xacro:property name="deg_to_rad" value="0.01745329251994329577"/>
+
 <!--================================================================Gazebo References=============================================================================-->
 
 <gazebo reference="base_link">
@@ -313,6 +315,16 @@
     <child link="link6"/>
     <dynamics damping="0.0" friction="0.0"/>
 </joint>
+
+
+<!--==================================== Sensor section======================================================== -->
+<xacro:include filename="$(find schunk_robot)/urdf/sensors/xtion_pro_live.urdf.xacro"/>
+
+<xacro:xtion_pro_live name="rgbd_camera" parent="base">
+    <!-- <origin xyz="0.5 0.0 0.8" rpy="0 ${75.0 * deg_to_rad} 0"/> -->
+    <origin xyz="0.5 0.0 0.8" rpy="0 0 ${-180.0 * deg_to_rad}"/>
+    <origin xyz="0 0 0" rpy="${-90.0 * deg_to_rad} 0 ${-90.0 * deg_to_rad}"/> 
+  </xacro:xtion_pro_live>
 
 <!-- =================================== Transmissions for the joints ========================================== -->
 
