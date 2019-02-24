@@ -1,0 +1,7 @@
+<launch>
+	<rosparam file="$(find schunk_config)/config/trajectory_control.yaml" command="load"/>
+
+  <node name="seven_dof_arm_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/schunk" args="schunk_arm_controller end_effector_controller"/>
+
+</launch>
