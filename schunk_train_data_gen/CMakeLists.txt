@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(schunk_train_data_gen)
 
-## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+# Compile as C++11, supported in ROS Kinetic and newer
+ add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -17,6 +17,10 @@ find_package(catkin REQUIRED COMPONENTS
   schunk_robot
   sensor_msgs
   std_msgs
+  moveit_ros_planning_interface
+  moveit_ros_planning
+  moveit_core
+  moveit_visual_tools
 )
 
 ## System dependencies are found with CMake's conventions
@@ -111,8 +115,22 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES schunk_train_data_gen
-#  CATKIN_DEPENDS gazebo_msgs gazebo_plugins gazebo_ros gazebo_ros_control schunk_config schunk_gazebo schunk_robot sensor_msgs std_msgs
+ CATKIN_DEPENDS 
+ gazebo_msgs 
+ gazebo_plugins 
+ gazebo_ros 
+ gazebo_ros_control 
+ schunk_config 
+ schunk_gazebo 
+ schunk_robot 
+ sensor_msgs 
+ std_msgs
+ moveit_core
+ moveit_visual_tools
+ moveit_ros_planning_interface
+ interactive_markers
 #  DEPENDS system_lib
+
 )
 
 ###########
@@ -203,3 +221,6 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(schunk_planning_node src/schunk_planning_node.cpp)
+target_link_libraries(schunk_planning_node ${catkin_LIBRARIES})
