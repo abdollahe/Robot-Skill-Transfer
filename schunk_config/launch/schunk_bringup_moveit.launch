@@ -1,6 +1,6 @@
 <launch> 
   <!-- Launch Gazebo  --> 
-  <include file="$(find schunk_gazebo)/launch/schunk_world.launch" />    
+  <include file="$(find schunk_gazebo)/launch/schunk_with_rgbd_world.launch" />    
  
   <!-- ros_control schunk arm launch file --> 
   <include file="$(find schunk_gazebo)/launch/schunk_gazebo_states.launch" />    

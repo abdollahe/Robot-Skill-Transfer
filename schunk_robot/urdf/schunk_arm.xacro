@@ -72,6 +72,10 @@
         <material name="red">
             <color rgba="1 0 0 1"/>
         </material>
+        <!-- Gazebo visual plugin for changing the background of the scene -->
+        <plugin name="visual_scene_edit" filename="libvisual_scene_edit.so"> 
+        
+        </plugin> 
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>

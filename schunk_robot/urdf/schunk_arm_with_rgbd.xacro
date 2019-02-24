@@ -11,6 +11,11 @@
     <gravity>true</gravity>
     <self_collide>false</self_collide>
     <material value="Gazebo/Red"/>
+    <!-- Gazebo visual plugin for changing the background of the scene -->
+    <visual>
+        <plugin name="visual_scene_edit" filename="libvisual_scene_edit.so"/> 
+    </visual>
+     
 </gazebo>
 
 <gazebo reference="link1">
